@@ -18,9 +18,14 @@ public class Main {
             do {
                 System.out.print("Digite para armazenar na memória: ");
                 dado = in.next();
-                key++;
-                cache.put(key, dado);
-                System.out.println(cache);
+                if (cache.containsValue(dado)){ //Confere se o dado já esta armazenado na cache
+                    System.out.println("A cache já possui esta entrada.");
+                }
+                else{
+                    key++;
+                    cache.put(key, dado);
+                    System.out.println(cache.values());
+                }
             } while (cache.size() < max);
         }
 
@@ -32,16 +37,20 @@ public class Main {
             while(escolha == 1){
                 System.out.print("Digite para armazenar na memória: ");
                 dado = in.next();
-                key++;
-                cache.put(key, dado);
-                System.out.println(cache);
-                System.out.println();
-                System.out.println("Você quer continuar armazenando dados?");
-                System.out.println("[1] - Sim, continuar");
-                System.out.println("[2] - Não, sair");
-                escolha = in.nextInt();
-            }
+                if (cache.containsValue(dado)){//Confere se o dado já esta armazenado na cache
+                    System.out.println("A cache já possui esta entrada.");
+                }
+                else{
+                    key++;
+                    cache.put(key, dado);
+                    System.out.println(cache.value());
+                    System.out.println();
+                    System.out.println("Você quer continuar armazenando dados?");
+                    System.out.println("[1] - Sim, continuar");
+                    System.out.println("[2] - Não, sair");
+                    escolha = in.nextInt();
+                }
+             }
         }
-
     }
 }
